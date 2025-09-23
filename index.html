@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OnTime AI Receptionist — Never Miss a Call Again</title>
+  <meta name="description" content="AI Virtual Receptionist for laundromats, car washes, and limousine services. 24/7 human‑like support, bookings, and lead capture." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="preload" as="style" onload="this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" /></noscript>
+  <style>
+    :root{
+      --bg:#F0F4F8;            /* light background */
+      --card:#FFFFFF;          /* card background */
+      --ink:#1B263B;           /* primary text (navy) */
+      --muted:#4A5568;         /* secondary text */
+      --primary:#3A86FF;       /* buttons/links */
+      --secondary:#FF6B6B;     /* secondary accent */
+      --radius:16px;
+      --shadow:0 10px 25px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
+    .container{max-width:1100px;margin:0 auto;padding:clamp(16px,4vw,32px)}
+
+    /* Nav */
+    nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
+    .logo{font-weight:800;letter-spacing:.3px}
+    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--ink);text-decoration:none;font-weight:600}
+
+    /* Buttons */
+    .btn{display:inline-block;background:var(--primary);color:#fff;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 6px 16px rgba(58,134,255,.25);transition:transform .2s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn.alt{background:var(--secondary);box-shadow:0 6px 16px rgba(255,107,107,.25)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:30px 0 10px}
+    .hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 12px}
+    .hero p{font-size:clamp(16px,1.6vw,20px);color:var(--muted);margin:0 0 20px}
+
+    /* Utilities */
+    .card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+    .banner{background:linear-gradient(135deg, rgba(58,134,255,.1), rgba(0,191,166,.12)); border:1px solid rgba(58,134,255,.15)}
+    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .kpi{background:#fff;border-radius:12px;padding:14px;box-shadow:var(--shadow);text-align:center}
+    section{padding:32px 0}
+    .section-title{font-size:clamp(24px,3.5vw,36px);margin:0 0 10px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    .benefit h3{margin-top:6px;margin-bottom:8px;font-size:20px}
+    .badge{display:inline-block;background:rgba(58,134,255,.1);color:var(--primary);padding:4px 10px;border-radius:999px;font-weight:700;font-size:12px}
+    footer{border-top:1px solid rgba(27,38,59,.1);margin-top:40px}
+    .small{font-size:14px;color:var(--muted)}
+    .input{padding:12px 14px;border:1px solid #e2e8f0;border-radius:12px;outline:none;width:280px}
+    .cta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid-3,.grid-2,.kpis{grid-template-columns:1fr}
+      .input{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <nav aria-label="Primary">
+      <div class="logo">OnTime AI Receptionist</div>
+      <ul>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#usecases">Use Cases</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#cta">Book Demo</a></li>
+      </ul>
+    </nav>
+
+    <div class="hero">
+      <div>
+        <h1>Never Miss a Call Again</h1>
+        <p>Missed calls cost customers. Our AI receptionist answers every call with friendly, human‑like service—24/7—so you never lose a lead and can stay focused on growth.</p>
+        <a class="btn" href="#cta">Book a Demo</a>
+        <a class="btn alt" href="tel:+1-555-555-5555">Call Us</a>
+        <div class="kpis" aria-label="Key performance improvements">
+          <div class="kpi"><strong>+25%</strong><div class="small">Qualified leads</div></div>
+          <div class="kpi"><strong>-60%</strong><div class="small">Call handling cost</div></div>
+          <div class="kpi"><strong>99.9%</strong><div class="small">Uptime</div></div>
+        </div>
+      </div>
+      <div class="card banner" role="img" aria-label="AI funnel converting calls to booked appointments">
+        <h3 style="margin-top:0">How it works</h3>
+        <ol>
+          <li>We answer instantly by phone or chat.</li>
+          <li>We qualify, capture details, and schedule.</li>
+          <li>We sync to your calendar & CRM.</li>
+        </ol>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="benefits" class="container">
+      <h2 class="section-title">Why Choose Our AI Receptionist</h2>
+      <div class="grid-3">
+        <div class="card benefit"><span class="badge">24/7</span><h3>Answer Every Call</h3><p>Instant, friendly responses day and night—no voicemail, no missed revenue.</p></div>
+        <div class="card benefit"><span class="badge">Smart</span><h3>Smarter Bookings</h3><p>Real-time scheduling with confirmations and reminders to reduce no‑shows.</p></div>
+        <div class="card benefit"><span class="badge">CRM</span><h3>Lead Capture & Sync</h3><p>Collect names, needs, and contact info automatically; push to your CRM.</p></div>
+        <div class="card benefit"><span class="badge">Save</span><h3>Significant Cost Savings</h3><p>Lower staffing and overflow costs while delivering faster, consistent service.</p></div>
+        <div class="card benefit"><span class="badge">Human‑like</span><h3>Multilingual Support</h3><p>On‑brand conversations in English/Spanish; more languages available.</p></div>
+        <div class="card benefit"><span class="badge">Scale</span><h3>Peak‑Proof Scalability</h3><p>Handles call spikes on busy days without missing a beat.</p></div>
+        <div class="card benefit"><span class="badge">Shield</span><h3>Spam Screening</h3><p>Block robocalls so real customers get through first.</p></div>
+        <div class="card benefit"><span class="badge">Insights</span><h3>Analytics & Transcripts</h3><p>See trends, FAQs, and quality metrics to improve operations.</p></div>
+        <div class="card benefit"><span class="badge">Handoff</span><h3>Seamless Human Transfer</h3><p>Escalate with full context via warm transfer, SMS, or email.</p></div>
+      </div>
+    </section>
+
+    <section id="usecases" class="container">
+      <h2 class="section-title">Built for Your Business</h2>
+      <div class="grid-3">
+        <div class="card"><h3>Laundromats</h3><p>We answer hours, pricing, machine types, and lost‑and‑found—fast.</p></div>
+        <div class="card"><h3>Car Washes</h3><p>Explain packages, wait times, and membership plans; upsell add‑ons.</p></div>
+        <div class="card"><h3>Limousine Services</h3><p>Qualify riders, gather trip details, and book directly to your calendar.</p></div>
+      </div>
+    </section>
+
+    <section id="features" class="container">
+      <h2 class="section-title">Key Features</h2>
+      <div class="grid-2">
+        <div class="card">
+          <ul>
+            <li>Natural, human‑like answers</li>
+            <li>Appointment scheduling & reminders</li>
+            <li>Lead capture with consent</li>
+            <li>CRM and calendar integrations</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li>Spam filtering & routing</li>
+            <li>Multilingual support</li>
+            <li>Analytics, transcripts, call summaries</li>
+            <li>Secure, privacy‑first handling</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="container">
+      <div class="card cta">
+        <div>
+          <h2 class="section-title" style="margin:0">See it in action</h2>
+          <p class="small">Book a 15‑minute demo. We’ll connect your use case and show real conversations.</p>
+        </div>
+        <form action="https://formspree.io/f/your-id" method="POST" class="cta-form" onsubmit="alert('Thanks! We’ll be in touch soon.');">
+          <label class="sr-only" for="email">Email</label>
+          <input id="email" class="input" type="email" name="email" placeholder="Work email" required />
+          <button class="btn" type="submit">Book a Demo</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container small">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 0">
+      <span>© <span id="year"></span> OnTime AI Receptionist</span>
+      <a href="mailto:hello@example.com">hello@example.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // Auto year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
