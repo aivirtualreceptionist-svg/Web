@@ -1,175 +1,670 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OnTime AI Receptionist — Never Miss a Call Again</title>
-  <meta name="description" content="AI Virtual Receptionist for laundromats, car washes, and limousine services. 24/7 human‑like support, bookings, and lead capture." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="preload" as="style" onload="this.rel='stylesheet'" />
-  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" /></noscript>
-  <style>
-    :root{
-      --bg:#F0F4F8;            /* light background */
-      --card:#FFFFFF;          /* card background */
-      --ink:#1B263B;           /* primary text (navy) */
-      --muted:#4A5568;         /* secondary text */
-      --primary:#3A86FF;       /* buttons/links */
-      --secondary:#FF6B6B;     /* secondary accent */
-      --radius:16px;
-      --shadow:0 10px 25px rgba(0,0,0,.06);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6}
-    .container{max-width:1100px;margin:0 auto;padding:clamp(16px,4vw,32px)}
-
-    /* Nav */
-    nav{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
-    .logo{font-weight:800;letter-spacing:.3px}
-    nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0}
-    nav a{color:var(--ink);text-decoration:none;font-weight:600}
-
-    /* Buttons */
-    .btn{display:inline-block;background:var(--primary);color:#fff;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;box-shadow:0 6px 16px rgba(58,134,255,.25);transition:transform .2s ease}
-    .btn:hover{transform:translateY(-1px)}
-    .btn.alt{background:var(--secondary);box-shadow:0 6px 16px rgba(255,107,107,.25)}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;padding:30px 0 10px}
-    .hero h1{font-size:clamp(36px,6vw,64px);line-height:1.05;margin:0 0 12px}
-    .hero p{font-size:clamp(16px,1.6vw,20px);color:var(--muted);margin:0 0 20px}
-
-    /* Utilities */
-    .card{background:var(--card);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
-    .banner{background:linear-gradient(135deg, rgba(58,134,255,.1), rgba(0,191,166,.12)); border:1px solid rgba(58,134,255,.15)}
-    .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-    .kpi{background:#fff;border-radius:12px;padding:14px;box-shadow:var(--shadow);text-align:center}
-    section{padding:32px 0}
-    .section-title{font-size:clamp(24px,3.5vw,36px);margin:0 0 10px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .benefit h3{margin-top:6px;margin-bottom:8px;font-size:20px}
-    .badge{display:inline-block;background:rgba(58,134,255,.1);color:var(--primary);padding:4px 10px;border-radius:999px;font-weight:700;font-size:12px}
-    footer{border-top:1px solid rgba(27,38,59,.1);margin-top:40px}
-    .small{font-size:14px;color:var(--muted)}
-    .input{padding:12px 14px;border:1px solid #e2e8f0;border-radius:12px;outline:none;width:280px}
-    .cta{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .grid-3,.grid-2,.kpis{grid-template-columns:1fr}
-      .input{width:100%}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontline AI - Your 24/7 AI Receptionist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* slate-950 */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #4f46e5, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .tab-active {
+            background-color: #4f46e5;
+            color: white;
+        }
+        .tab-inactive {
+            background-color: #1e293b; /* slate-800 */
+            color: #94a3b8; /* slate-400 */
+        }
+        .faq-question.open .faq-icon {
+            transform: rotate(180deg);
+        }
+    </style>
 </head>
-<body>
-  <header class="container">
-    <nav aria-label="Primary">
-      <div class="logo">OnTime AI Receptionist</div>
-      <ul>
-        <li><a href="#benefits">Benefits</a></li>
-        <li><a href="#usecases">Use Cases</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#cta">Book Demo</a></li>
-      </ul>
-    </nav>
 
-    <div class="hero">
-      <div>
-        <h1>Never Miss a Call Again</h1>
-        <p>Missed calls cost customers. Our AI receptionist answers every call with friendly, human‑like service—24/7—so you never lose a lead and can stay focused on growth.</p>
-        <a class="btn" href="#cta">Book a Demo</a>
-        <a class="btn alt" href="tel:+1-555-555-5555">Call Us</a>
-        <div class="kpis" aria-label="Key performance improvements">
-          <div class="kpi"><strong>+25%</strong><div class="small">Qualified leads</div></div>
-          <div class="kpi"><strong>-60%</strong><div class="small">Call handling cost</div></div>
-          <div class="kpi"><strong>99.9%</strong><div class="small">Uptime</div></div>
+<body class="text-slate-300">
+
+    <!-- Header -->
+    <header class="bg-slate-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-slate-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"/><rect width="18" height="18" x="3" y="4" rx="2"/><circle cx="12" cy="10" r="2"/><line x1="8" x2="8" y1="2" y2="4"/><line x1="16" x2="16" y1="2" y2="4"/></svg>
+                Frontline AI
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="hover:text-indigo-400 transition-colors">Features</a>
+                <a href="#ai-insights" class="hover:text-indigo-400 transition-colors">AI Insights</a>
+                <a href="#how-it-works" class="hover:text-indigo-400 transition-colors">How It Works</a>
+                <a href="#industries" class="hover:text-indigo-400 transition-colors">Industries</a>
+                <a href="#pricing" class="hover:text-indigo-400 transition-colors">Pricing</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <a href="#pricing" class="hidden sm:block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors">
+                    Start Free Trial
+                </a>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
         </div>
-      </div>
-      <div class="card banner" role="img" aria-label="AI funnel converting calls to booked appointments">
-        <h3 style="margin-top:0">How it works</h3>
-        <ol>
-          <li>We answer instantly by phone or chat.</li>
-          <li>We qualify, capture details, and schedule.</li>
-          <li>We sync to your calendar & CRM.</li>
-        </ol>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section id="benefits" class="container">
-      <h2 class="section-title">Why Choose Our AI Receptionist</h2>
-      <div class="grid-3">
-        <div class="card benefit"><span class="badge">24/7</span><h3>Answer Every Call</h3><p>Instant, friendly responses day and night—no voicemail, no missed revenue.</p></div>
-        <div class="card benefit"><span class="badge">Smart</span><h3>Smarter Bookings</h3><p>Real-time scheduling with confirmations and reminders to reduce no‑shows.</p></div>
-        <div class="card benefit"><span class="badge">CRM</span><h3>Lead Capture & Sync</h3><p>Collect names, needs, and contact info automatically; push to your CRM.</p></div>
-        <div class="card benefit"><span class="badge">Save</span><h3>Significant Cost Savings</h3><p>Lower staffing and overflow costs while delivering faster, consistent service.</p></div>
-        <div class="card benefit"><span class="badge">Human‑like</span><h3>Multilingual Support</h3><p>On‑brand conversations in English/Spanish; more languages available.</p></div>
-        <div class="card benefit"><span class="badge">Scale</span><h3>Peak‑Proof Scalability</h3><p>Handles call spikes on busy days without missing a beat.</p></div>
-        <div class="card benefit"><span class="badge">Shield</span><h3>Spam Screening</h3><p>Block robocalls so real customers get through first.</p></div>
-        <div class="card benefit"><span class="badge">Insights</span><h3>Analytics & Transcripts</h3><p>See trends, FAQs, and quality metrics to improve operations.</p></div>
-        <div class="card benefit"><span class="badge">Handoff</span><h3>Seamless Human Transfer</h3><p>Escalate with full context via warm transfer, SMS, or email.</p></div>
-      </div>
-    </section>
-
-    <section id="usecases" class="container">
-      <h2 class="section-title">Built for Your Business</h2>
-      <div class="grid-3">
-        <div class="card"><h3>Laundromats</h3><p>We answer hours, pricing, machine types, and lost‑and‑found—fast.</p></div>
-        <div class="card"><h3>Car Washes</h3><p>Explain packages, wait times, and membership plans; upsell add‑ons.</p></div>
-        <div class="card"><h3>Limousine Services</h3><p>Qualify riders, gather trip details, and book directly to your calendar.</p></div>
-      </div>
-    </section>
-
-    <section id="features" class="container">
-      <h2 class="section-title">Key Features</h2>
-      <div class="grid-2">
-        <div class="card">
-          <ul>
-            <li>Natural, human‑like answers</li>
-            <li>Appointment scheduling & reminders</li>
-            <li>Lead capture with consent</li>
-            <li>CRM and calendar integrations</li>
-          </ul>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900">
+            <a href="#features" class="block py-2 px-6 hover:bg-slate-800">Features</a>
+            <a href="#ai-insights" class="block py-2 px-6 hover:bg-slate-800">AI Insights</a>
+            <a href="#how-it-works" class="block py-2 px-6 hover:bg-slate-800">How It Works</a>
+            <a href="#industries" class="block py-2 px-6 hover:bg-slate-800">Industries</a>
+            <a href="#pricing" class="block py-2 px-6 hover:bg-slate-800">Pricing</a>
+            <div class="p-4">
+                 <a href="#pricing" class="block text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors">
+                    Start Free Trial
+                </a>
+            </div>
         </div>
-        <div class="card">
-          <ul>
-            <li>Spam filtering & routing</li>
-            <li>Multilingual support</li>
-            <li>Analytics, transcripts, call summaries</li>
-            <li>Secure, privacy‑first handling</li>
-          </ul>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="pt-32 pb-20 text-center bg-slate-950 relative overflow-hidden">
+             <div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#312e81,transparent)]"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                    Stop Missing Calls. <br><span class="gradient-text">Start Growing Your Business.</span>
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-400">
+                    Our 24/7 AI Receptionist answers every call, books appointments, and captures leads, so you can focus on what you do best.
+                </p>
+                <div class="mt-10 flex justify-center items-center gap-4 flex-wrap">
+                    <a href="#pricing" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform hover:scale-105">
+                        Start Your 14-Day Free Trial
+                    </a>
+                    <a href="#demo" class="bg-slate-700 hover:bg-slate-600 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform hover:scale-105">
+                        See an Interactive Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- "As Featured In" Section -->
+        <div class="py-12 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <p class="text-center text-slate-500 font-semibold">TRUSTED BY SMALL BUSINESSES ACROSS THE COUNTRY</p>
+                <div class="mt-6 flex justify-center items-center gap-8 md:gap-12 flex-wrap opacity-60">
+                    <p class="text-2xl font-bold">L.A. Limo Kings</p>
+                    <p class="text-2xl font-bold">Suds & Duds</p>
+                    <p class="text-2xl font-bold">Gleam Team Wash</p>
+                    <p class="text-2xl font-bold">City Express</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
 
-    <section id="cta" class="container">
-      <div class="card cta">
-        <div>
-          <h2 class="section-title" style="margin:0">See it in action</h2>
-          <p class="small">Book a 15‑minute demo. We’ll connect your use case and show real conversations.</p>
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Get Started in 3 Simple Steps</h2>
+                <p class="mt-4 max-w-xl mx-auto text-slate-400">It's never been easier to professionalize your business communications.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-left">
+                    <!-- Step 1 -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-800">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-indigo-600 h-12 w-12 rounded-lg flex items-center justify-center text-white font-bold text-2xl">1</div>
+                            <h3 class="text-xl font-bold text-white">Customize Your AI</h3>
+                        </div>
+                        <p class="mt-4 text-slate-400">Answer a few simple questions about your business—hours, services, common questions—to train your personal receptionist.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-800">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-indigo-600 h-12 w-12 rounded-lg flex items-center justify-center text-white font-bold text-2xl">2</div>
+                            <h3 class="text-xl font-bold text-white">Connect Your Number</h3>
+                        </div>
+                        <p class="mt-4 text-slate-400">Easily forward your existing business number to us. No need to change your number or print new business cards.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-800">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-indigo-600 h-12 w-12 rounded-lg flex items-center justify-center text-white font-bold text-2xl">3</div>
+                            <h3 class="text-xl font-bold text-white">Never Miss a Call</h3>
+                        </div>
+                        <p class="mt-4 text-slate-400">That's it! Your AI is now live 24/7, capturing leads, booking jobs, and impressing your customers while you work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">A Receptionist That Does More Than Just Answer</h2>
+                    <p class="mt-4 max-w-xl mx-auto text-slate-400">Give your business the professional front desk it deserves, without the cost.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- ... existing feature items ... -->
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-800 p-3 rounded-lg"><i data-lucide="phone-call" class="text-indigo-400"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">24/7 Call Answering</h3>
+                            <p class="text-slate-400 mt-1">Never let a call go to voicemail again. Your AI is always on, ready to greet customers professionally day or night.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-800 p-3 rounded-lg"><i data-lucide="calendar-plus" class="text-indigo-400"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">Intelligent Appointment Booking</h3>
+                            <p class="text-slate-400 mt-1">Integrates with your calendar to book appointments, reservations, or consultations directly over the phone.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-800 p-3 rounded-lg"><i data-lucide="message-square-quote" class="text-indigo-400"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">Custom FAQ Handling</h3>
+                            <p class="text-slate-400 mt-1">Answers common questions about your hours, pricing, location, and services, freeing up your time.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-800 p-3 rounded-lg"><i data-lucide="arrow-right-left" class="text-indigo-400"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">Smart Call Routing</h3>
+                            <p class="text-slate-400 mt-1">For urgent or complex queries, your AI can intelligently forward the call directly to your cell phone.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-800 p-3 rounded-lg"><i data-lucide="captions" class="text-indigo-400"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">Voicemail Transcription</h3>
+                            <p class="text-slate-400 mt-1">Receive instant SMS and email alerts with a full text transcription of any message taken.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="bg-slate-800 p-3 rounded-lg"><i data-lucide="users" class="text-indigo-400"></i></div>
+                        <div>
+                            <h3 class="font-semibold text-lg text-white">Lead Capture</h3>
+                            <p class="text-slate-400 mt-1">Your AI is trained to get the name and number of every potential customer, building your marketing list automatically.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Insights Section -->
+        <section id="ai-insights" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">See the AI in Action</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-slate-400">Use our Gemini-powered tools to instantly generate assets for your business. See the power of AI firsthand.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- AI Greeting Generator -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-800">
+                        <h3 class="text-2xl font-bold text-white flex items-center gap-2">✨ AI Greeting Generator</h3>
+                        <p class="text-slate-400 mt-2">Get a custom greeting for your business in seconds.</p>
+                        <div class="mt-6 space-y-4">
+                            <div>
+                                <label for="businessName" class="block text-sm font-medium text-slate-300">Business Name</label>
+                                <input type="text" id="businessName" class="mt-1 block w-full bg-slate-800 border-slate-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="e.g., LA Premier Limos">
+                            </div>
+                            <div>
+                                <label for="businessTypeGreeting" class="block text-sm font-medium text-slate-300">Business Type</label>
+                                <select id="businessTypeGreeting" class="mt-1 block w-full bg-slate-800 border-slate-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                    <option>Limo Service</option>
+                                    <option>Car Wash</option>
+                                    <option>Laundromat</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="generateGreetingBtn" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Generate Greeting
+                        </button>
+                        <div class="mt-6 bg-slate-800/50 p-4 rounded-lg min-h-[100px] text-slate-300 italic" id="greetingResult">
+                            Your generated greeting will appear here...
+                        </div>
+                    </div>
+                    <!-- Business FAQ Suggester -->
+                    <div class="bg-slate-900 p-8 rounded-xl border border-slate-800">
+                        <h3 class="text-2xl font-bold text-white flex items-center gap-2">✨ Business FAQ Suggester</h3>
+                        <p class="text-slate-400 mt-2">Discover the key questions your AI should answer.</p>
+                        <div class="mt-6">
+                            <label for="businessTypeFaq" class="block text-sm font-medium text-slate-300">Business Type</label>
+                            <select id="businessTypeFaq" class="mt-1 block w-full bg-slate-800 border-slate-700 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                                <option>Limo Service</option>
+                                <option>Car Wash</option>
+                                <option>Laundromat</option>
+                            </select>
+                        </div>
+                        <button id="generateFaqBtn" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-5 rounded-lg transition-colors flex items-center justify-center gap-2">
+                            Suggest FAQs
+                        </button>
+                        <div class="mt-6 bg-slate-800/50 p-4 rounded-lg min-h-[160px]" id="faqResult">
+                            <p class="text-slate-300 italic">Suggested FAQs will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries Section -->
+        <section id="industries" class="py-20 bg-slate-900">
+                        </div>
+                        <div class="order-first lg:order-last">
+                           <img src="https://placehold.co/600x400/0f172a/4f46e5?text=Laundromat" alt="Laundromat Service" class="rounded-xl shadow-lg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" class="py-20 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Experience It Yourself</h2>
+                    <p class="mt-4 max-w-xl mx-auto text-slate-400">See how a typical call would go for a limo service booking. Press play to start the demo.</p>
+                </div>
+                <div class="mt-12 max-w-md mx-auto bg-slate-800 rounded-3xl border-4 border-slate-700 p-4 shadow-2xl">
+                    <div class="bg-slate-900 rounded-2xl p-6 h-96 flex flex-col">
+                        <div class="text-center">
+                            <p class="font-semibold text-white">Incoming Call...</p>
+                            <p class="text-sm text-slate-400">(555) 123-4567</p>
+                        </div>
+                        <div id="demo-transcript" class="mt-4 flex-grow space-y-3 overflow-y-auto text-sm">
+                            <!-- Transcript will be populated by JS -->
+                            <p class="text-slate-400 italic text-center pt-10">Click "Play" to see the conversation.</p>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-slate-700">
+                             <button id="play-demo-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2">
+                                <i data-lucide="play-circle"></i> Play Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Simple, Transparent Pricing</h2>
+                    <p class="mt-4 max-w-xl mx-auto text-slate-400">Choose a plan that scales with your business. No hidden fees. Cancel anytime.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                    <!-- Pricing Plan -->
+                    <div class="bg-slate-900 p-8 rounded-2xl border-2 border-indigo-600 shadow-2xl relative">
+                        <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-sm font-bold px-4 py-1 rounded-full">MOST POPULAR</div>
+                        <h3 class="text-2xl font-bold text-white text-center">Pro Plan</h3>
+                        <p class="text-center text-slate-400 mt-2">Everything you need to grow.</p>
+                        <p class="text-5xl font-extrabold text-white text-center mt-6">
+                            $99<span class="text-lg font-medium text-slate-400">/month</span>
+                        </p>
+                        <ul class="mt-8 space-y-4">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500"></i> <span>Up to 250 calls/month</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500"></i> <span>24/7 Call Answering</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500"></i> <span>Custom FAQ Handling</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500"></i> <span>Appointment Booking</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500"></i> <span>Smart Call Routing</span></li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500"></i> <span>SMS & Email Transcriptions</span></li>
+                        </ul>
+                        <a href="#" class="block w-full text-center mt-8 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg">Start Your Free Trial</a>
+                    </div>
+
+                    <!-- Comparison Chart -->
+                    <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800">
+                        <h3 class="text-2xl font-bold text-white text-center">Cost Comparison</h3>
+                        <p class="text-center text-slate-400 mt-2">See how we stack up.</p>
+                        <div class="mt-6 flow-root">
+                            <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                                    <table class="min-w-full divide-y divide-slate-700">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-0">Feature</th>
+                                                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-white">Frontline AI</th>
+                                                <th scope="col" class="px-3 py-3.5 text-center text-sm font-semibold text-white">Human Receptionist</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-800">
+                                            <tr>
+                                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">Monthly Cost</td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-green-400 font-bold">$99</td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-red-400 font-bold">~$2,500+</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">Availability</td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-slate-300">24/7/365</td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center text-slate-300">~40 hrs/week</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">Instant SMS Alerts</td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center"><i data-lucide="check-circle" class="mx-auto text-green-500"></i></td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center"><i data-lucide="x-circle" class="mx-auto text-red-500"></i></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">After-hours Coverage</td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center"><i data-lucide="check-circle" class="mx-auto text-green-500"></i></td>
+                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-center"><i data-lucide="x-circle" class="mx-auto text-red-500"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                         <p class="text-center text-slate-500 text-sm mt-4">Human receptionist cost based on part-time wages, not including benefits, training, or overhead.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Don't Just Take Our Word For It</h2>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <p class="text-slate-300">"My bookings have increased by 30% since I stopped missing calls while I was on the road. Frontline AI paid for itself in the first week. A total game-changer."</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white">JD</div>
+                            <div>
+                                <p class="font-semibold text-white">John D.</p>
+                                <p class="text-sm text-slate-400">Owner, LA Premier Limos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <p class="text-slate-300">"I used to waste an hour a day answering questions about our hours and packages. Now, the AI handles it all and even books detailing jobs. I have so much more time."</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-bold text-white">MS</div>
+                            <div>
+                                <p class="font-semibold text-white">Maria S.</p>
+                                <p class="text-sm text-slate-400">Manager, Wash N' Go</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700">
+                        <p class="text-slate-300">"Honestly, I was skeptical. An AI for my laundromat? But it works flawlessly. Customers get instant answers and my staff isn't tied to the phone. Highly recommend."</p>
+                        <div class="mt-6 flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-white">TP</div>
+                            <div>
+                                <p class="font-semibold text-white">Tom P.</p>
+                                <p class="text-sm text-slate-400">Owner, Suds & Duds</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20">
+             <div class="container mx-auto px-6 max-w-4xl">
+                 <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+                </div>
+                <div class="mt-12 space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="font-semibold text-lg text-white">Is it a robotic voice?</span>
+                            <i data-lucide="chevron-down" class="faq-icon text-slate-400 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-400">
+                            <p>Not at all. We use state-of-the-art, natural-sounding AI voices that are clear, professional, and friendly. You can choose from a variety of voice styles to perfectly match your brand's personality.</p>
+                        </div>
+                    </div>
+                     <!-- FAQ Item 2 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="font-semibold text-lg text-white">How difficult is the setup process?</span>
+                            <i data-lucide="chevron-down" class="faq-icon text-slate-400 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-400">
+                            <p>It's incredibly simple and takes less than 15 minutes. You just answer some questions about your business, and we guide you through the one-click process to forward your phone line. No technical skills required.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="font-semibold text-lg text-white">Can I keep my current business phone number?</span>
+                            <i data-lucide="chevron-down" class="faq-icon text-slate-400 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-400">
+                            <p>Absolutely. Your phone number is a valuable asset. Our service works by having you forward your existing number to us. Your customers will continue to call the same number they always have.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg">
+                        <button class="faq-question w-full flex justify-between items-center text-left p-6">
+                            <span class="font-semibold text-lg text-white">What happens if the AI can't answer a customer's question?</span>
+                            <i data-lucide="chevron-down" class="faq-icon text-slate-400 transition-transform"></i>
+                        </button>
+                        <div class="faq-answer hidden px-6 pb-6 text-slate-400">
+                            <p>Our AI is trained to recognize when a caller needs human assistance. In these cases, it will professionally offer to either transfer the call directly to you or take a detailed message and send you an instant notification with the transcript.</p>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800">
+        <div class="container mx-auto px-6 py-12">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold text-white flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-500"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"/><rect width="18" height="18" x="3" y="4" rx="2"/><circle cx="12" cy="10" r="2"/><line x1="8" x2="8" y1="2" y2="4"/><line x1="16" x2="16" y1="2" y2="4"/></svg>
+                        Frontline AI
+                    </a>
+                    <p class="mt-2 text-slate-400">Your 24/7 competitive edge.</p>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-8">
+                    <div>
+                        <h2 class="mb-4 text-sm font-semibold text-white uppercase">Product</h2>
+                        <ul class="text-slate-400 space-y-2">
+                            <li><a href="#features" class="hover:text-indigo-400">Features</a></li>
+                            <li><a href="#pricing" class="hover:text-indigo-400">Pricing</a></li>
+                            <li><a href="#demo" class="hover:text-indigo-400">Demo</a></li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h2 class="mb-4 text-sm font-semibold text-white uppercase">Company</h2>
+                        <ul class="text-slate-400 space-y-2">
+                            <li><a href="#" class="hover:text-indigo-400">About Us</a></li>
+                            <li><a href="#" class="hover:text-indigo-400">Contact</a></li>
+                            <li><a href="#" class="hover:text-indigo-400">Careers</a></li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h2 class="mb-4 text-sm font-semibold text-white uppercase">Legal</h2>
+                        <ul class="text-slate-400 space-y-2">
+                            <li><a href="#" class="hover:text-indigo-400">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-indigo-400">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-800 text-center text-slate-500">
+                &copy; 2025 Frontline AI. All Rights Reserved.
+            </div>
         </div>
-        <form action="https://formspree.io/f/your-id" method="POST" class="cta-form" onsubmit="alert('Thanks! We’ll be in touch soon.');">
-          <label class="sr-only" for="email">Email</label>
-          <input id="email" class="input" type="email" name="email" placeholder="Work email" required />
-          <button class="btn" type="submit">Book a Demo</button>
-        </form>
-      </div>
-    </section>
-  </main>
+    </footer>
 
-  <footer class="container small">
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:20px 0">
-      <span>© <span id="year"></span> OnTime AI Receptionist</span>
-      <a href="mailto:hello@example.com">hello@example.com</a>
-    </div>
-  </footer>
 
-  <script>
-    // Auto year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Industry Tabs
+        const tabs = document.querySelectorAll('.industry-tab');
+        const contents = document.querySelectorAll('.industry-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Deactivate all tabs
+                tabs.forEach(item => {
+                    item.classList.remove('tab-active');
+                    item.classList.add('tab-inactive');
+                });
+                // Activate clicked tab
+                tab.classList.add('tab-active');
+                tab.classList.remove('tab-inactive');
+                
+                // Hide all content
+                contents.forEach(content => {
+                    content.classList.add('hidden');
+                    // Add grid class back for proper layout when shown
+                    content.classList.add('grid');
+                });
+
+                // Show target content
+                const targetId = tab.getAttribute('data-tab');
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.remove('hidden');
+                }
+            });
+        });
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = question.classList.contains('open');
+                
+                // Optional: Close all other questions when one is opened
+                // faqQuestions.forEach(q => {
+                //     q.classList.remove('open');
+                //     q.nextElementSibling.classList.add('hidden');
+                // });
+
+                if (isOpen) {
+                    question.classList.remove('open');
+                    answer.classList.add('hidden');
+                } else {
+                    question.classList.add('open');
+                    answer.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Interactive Demo Simulation
+        const playDemoBtn = document.getElementById('play-demo-btn');
+        const demoTranscript = document.getElementById('demo-transcript');
+// ... existing conversation array ...
+        
+        // --- Gemini API Integration ---
+
+        const generateGreetingBtn = document.getElementById('generateGreetingBtn');
+        const generateFaqBtn = document.getElementById('generateFaqBtn');
+        const greetingResult = document.getElementById('greetingResult');
+        const faqResult = document.getElementById('faqResult');
+
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=`; // Key will be injected by environment
+
+        async function callGeminiAPI(prompt, button, resultElement) {
+            button.disabled = true;
+            button.innerHTML = `<i data-lucide="loader-2" class="animate-spin"></i> Generating...`;
+            lucide.createIcons();
+            resultElement.innerHTML = `<p class="text-slate-400 italic">AI is thinking...</p>`;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }]
+            };
+
+            try {
+                // Exponential backoff for retries
+                let response;
+                let retries = 3;
+                let delay = 1000;
+                for (let i = 0; i < retries; i++) {
+                    response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (response.ok) break;
+                    if (!response.ok && response.status === 429) {
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2;
+                    } else {
+                        throw new Error(`API request failed with status ${response.status}`);
+                    }
+                }
+                
+                if (!response.ok) {
+                    throw new Error('API request failed after multiple retries.');
+                }
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    let text = candidate.content.parts[0].text;
+                    // Basic markdown to HTML conversion for lists
+                    text = text.replace(/\n/g, '<br>');
+                    text = text.replace(/\d\.\s/g, (match) => `<br>${match}`);
+                    resultElement.innerHTML = text;
+                } else {
+                    resultElement.textContent = 'Sorry, the AI could not generate a response. Please try again.';
+                }
+            } catch (error) {
+                console.error("Gemini API call failed:", error);
+                resultElement.textContent = 'An error occurred. Please check the console and try again.';
+            } finally {
+                button.disabled = false;
+                // Restore original button text based on ID
+                if (button.id === 'generateGreetingBtn') {
+                    button.textContent = 'Generate Greeting';
+                } else if (button.id === 'generateFaqBtn') {
+                    button.textContent = 'Suggest FAQs';
+                }
+            }
+        }
+
+        generateGreetingBtn.addEventListener('click', () => {
+            const businessName = document.getElementById('businessName').value.trim();
+            const businessType = document.getElementById('businessTypeGreeting').value;
+
+            if (!businessName) {
+                greetingResult.textContent = 'Please enter a business name.';
+                return;
+            }
+
+            const prompt = `Generate a warm and professional welcome greeting for an AI receptionist for a business named "${businessName}", which is a ${businessType}. The greeting should be concise (around 20-30 words) and end with an open-ended question like "How can I help you today?".`;
+            callGeminiAPI(prompt, generateGreetingBtn, greetingResult);
+        });
+
+        generateFaqBtn.addEventListener('click', () => {
+            const businessType = document.getElementById('businessTypeFaq').value;
+            const prompt = `List the top 5 most frequently asked questions a customer might have for a ${businessType}. Format the response as a simple numbered list.`;
+            callGeminiAPI(prompt, generateFaqBtn, faqResult);
+        });
+
+    </script>
+
 </body>
+
 </html>
+
